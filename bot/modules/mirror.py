@@ -166,7 +166,7 @@ class MirrorListener(listeners.MirrorListeners):
                 surl = requests.get(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={link}&format=text').text
                 buttons.buildbutton("🌠 Drive Link 🌠", surl)
             else:
-                buttons.buildbutton("🌠 Drive Link 🌠", {link})
+                buttons.buildbutton("🌠 Drive Link 🌠", link)
             LOGGER.info(f'Done Uploading {download_dict[self.uid].name()}')
             if INDEX_URL is not None:
                 url_path = requests.utils.quote(f'{download_dict[self.uid].name()}')
