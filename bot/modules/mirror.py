@@ -159,7 +159,6 @@ class MirrorListener(listeners.MirrorListeners):
                 msg += '\n<b>☞ 🌀Type : </b><code>Folder</code>'
                 msg += f'\n<b>☞ 🗳Powerd by : @budy_RangerDark</b>'
             else:
-                msg += f'\n<b>☞ 🌠 Link 🌠 : </b><code>{link}</code>'
                 msg += f'\n<b>☞ 🗳Powerd by : @budy_RangerDark</b>'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
