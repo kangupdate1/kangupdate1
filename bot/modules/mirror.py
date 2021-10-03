@@ -164,7 +164,7 @@ class MirrorListener(listeners.MirrorListeners):
                 msg += f'\n<b>☞ 🗳Powerd by : @budy_RangerDark</b>'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
-                surl = requests.get(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={link}&format=text').text
+                surl = requests.get(f'https://{SHORTENER}/st?api={SHORTENER_API}&url={link}&format=text').text
                 buttons.buildbutton("🌠 Drive Link 🌠", surl)
             else:
                 buttons.buildbutton("🌠 Drive Link 🌠", link)
@@ -175,15 +175,15 @@ class MirrorListener(listeners.MirrorListeners):
                 if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
                     share_url += '/'
                     if SHORTENER is not None and SHORTENER_API is not None:
-                        siurl = requests.get(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={share_url}&format=text').text
+                        siurl = requests.get(f'https://{SHORTENER}/st?api={SHORTENER_API}&url={share_url}&format=text').text
                         buttons.buildbutton("☄️ Index Link ☄️", siurl)
                     else:
                         buttons.buildbutton("☄️ Index Link ☄️", share_url)
                 else:
                     share_urls = f'{INDEX_URL}/{url_path}?a=view'
                     if SHORTENER is not None and SHORTENER_API is not None:
-                        siurl = requests.get(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={share_url}&format=text').text
-                        siurls = requests.get(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={share_urls}&format=text').text
+                        siurl = requests.get(f'https://{SHORTENER}/st?api={SHORTENER_API}&url={share_url}&format=text').text
+                        siurls = requests.get(f'https://{SHORTENER}/st?api={SHORTENER_API}&url={share_urls}&format=text').text
                         buttons.buildbutton("☄️ Index Link ☄️", siurl)
                         if VIEW_LINK:
                             buttons.buildbutton(" View Link", siurls)
@@ -192,7 +192,7 @@ class MirrorListener(listeners.MirrorListeners):
                         if VIEW_LINK:
                             buttons.buildbutton(" View Link", share_urls)
             if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
-                buttons.buildbutton(f"fb", f"https://google.com")
+                buttons.buildbutton(f"{BUTTON_FOUR_NAME}", f"{BUTTON_FOUR_URL}")
             if BUTTON_FIVE_NAME is not None and BUTTON_FIVE_URL is not None:
                 buttons.buildbutton(f"{BUTTON_FIVE_NAME}", f"{BUTTON_FIVE_URL}")
             if BUTTON_SIX_NAME is not None and BUTTON_SIX_URL is not None:
