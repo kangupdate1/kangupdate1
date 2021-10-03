@@ -159,8 +159,6 @@ class MirrorListener(listeners.MirrorListeners):
                 msg += '\n<b>☞ 🌀Type : </b><code>Folder</code>'
                 msg += f'\n<b>☞ 🗳Powerd by : @budy_RangerDark</b>'
             else:
-                murl = requests.get(f'http://ouo.io/api/ARlk1o6H?s={link}&format=text').text
-                msg += f'\n<b>☞ 🗳 link : </b><code>{murl}</code>'
                 msg += f'\n<b>☞ 🗳Powerd by : @budy_RangerDark</b>'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
