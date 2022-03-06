@@ -378,7 +378,7 @@ class GoogleDriveHelper:
                     msg = self.deletefile(durl)
                     LOGGER.info(f"{msg}")
                     return "your clone has been stopped and cloned data has been deleted!", "cancelled"
-                msg += f'<b>☞ 📂Filename : </b><code>{meta.get("name")}</code>\n<b>Size: </b><code>{get_readable_file_size(self.transferred_size)}</code>'
+                msg += f'<b>☞ 📂Filename : </b><code>{meta.get("name")}</code>\n\n<b>Size: </b><code>{get_readable_file_size(self.transferred_size)}</code>'
                 msg += f'\n<b>☞ 🌀Type : </b><code>Folder</code>'
                 msg += f'\n<b>☞ Powerd by : @budy_RangerDark</b>'
                 buttons = button_build.ButtonMaker()
@@ -556,9 +556,9 @@ class GoogleDriveHelper:
                     content += f'<b> | <a href="https://telegra.ph/{self.path[nxt_page]}">Next</a></b>'
                     nxt_page += 1
             Telegraph(access_token=telegraph_token).edit_page(path = self.path[prev_page],
-                                 title = 'AT_BOTs Mirror bot search',
-                                 author_name='AT_BOTs',
-                                 author_url='https://t.me/AT_BOTs',
+                                 title = 'budy_RangerDark Mirrorsearch',
+                                 author_name='budy_RangerDark',
+                                 author_url='https://t.me/budy_RangerDark',
                                  html_content=content)
         return
 
@@ -641,8 +641,8 @@ class GoogleDriveHelper:
 
             for content in self.telegraph_content :
                 self.path.append(Telegraph(access_token=telegraph_token).create_page(
-                                                        title = 'budy_RangerDark Mirror bot search',
-                                                        author_name='budy_RangerDark Mirrorbot',
+                                                        title = 'budy_RangerDark Mirrorsearch',
+                                                        author_name='budy_RangerDark',
                                                         author_url='https://t.me/budy_RangerDark',
                                                         html_content=content
                                                         )['path'])
@@ -653,7 +653,7 @@ class GoogleDriveHelper:
 
             msg = f"<b>Found <code>{len(response['files'])}</code> results for <code>{fileName}</code></b>"
             buttons = button_build.ButtonMaker()   
-            buttons.buildbutton("🔎 VIEW", f"https://telegra.ph/{self.path[0]}")
+            buttons.buildbutton("🔎 LIHAT HASIL", f"https://telegra.ph/{self.path[0]}")
 
             return msg, InlineKeyboardMarkup(buttons.build_menu(1))
 
@@ -676,7 +676,7 @@ class GoogleDriveHelper:
             if drive_file['mimeType'] == self.__G_DRIVE_DIR_MIME_TYPE:
                 self.gDrive_directory(**drive_file)
                 msg += f'<b>☞ 📂Filename : </b><code>{name}</code>'
-                msg += f'\n<b>☞ 📦Size : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
+                msg += f'\n\n<b>☞ 📦Size : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
                 msg += f'\n<b>☞ 🌀Type : </b><code>Folder</code>'
                 msg += f'\n<b>☞ 📦SubFolders: </b><code>{self.total_folders}</code>'
                 msg += f'\n<b>☞ 📦Files: </b><code>{self.total_files}</code>'
@@ -690,7 +690,7 @@ class GoogleDriveHelper:
                 try:
                     self.total_files += 1
                     self.gDrive_file(**drive_file)
-                    msg += f'\n<b>☞ 📦Size : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
+                    msg += f'\n\n<b>☞ 📦Size : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
                     msg += f'\n<b>☞ 🌀Type : </b><code>{typee}</code>'
                     msg += f'\n<b>☞ 📦Files: </b><code>{self.total_files}</code>'
                     msg += f'\n<b>☞ 🗳Powered by : @budy_RangerDark</b>'
