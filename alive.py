@@ -1,31 +1,22 @@
-# Implement By - @anasty17 (https://github.com/breakdowns/slam-mirrorbot/commit/0bfba523f095ab1dccad431d72561e0e002e7a59)
-# (c) https://github.com/breakdowns/slam-mirrorbot
-# All rights reserved
+from time import sleep
+from requests import get as rget
+from os import environ
+from logging import error as logerror
 
-import time
-import requests
-import os
-from dotenv import load_dotenv
-
-load_dotenv('config.env')
-
+BASE_URL = environ.get('BASE_URL_OF_BOT', None)
 try:
-    BASE_URL = os.environ.get('BASE_URL_OF_BOT', None)
     if len(BASE_URL) == 0:
-        BASE_URL = None
-except KeyError:
+        raise TypeError
+    BASE_URL = BASE_URL.rstrip("/")
+except TypeError:
     BASE_URL = None
-
-try:
-    IS_VPS = os.environ.get('IS_VPS', 'False')
-    if IS_VPS.lower() == 'true':
-        IS_VPS = True
-    else:
-        IS_VPS = False
-except KeyError:
-    IS_VPS = False
-
-if not IS_VPS and BASE_URL is not None:
+PORT = environ.get('PORT', None)
+if PORT is not None and BASE_URL is not None:
     while True:
-        time.sleep(1000)
-        status = requests.get(BASE_URL).status_code
+        try:
+            rget(BASE_URL).status_code
+            sleep(600)
+        except Exception as e:
+            logerror(f"alive.py: {e}")
+            sleep(2)
+            continue
